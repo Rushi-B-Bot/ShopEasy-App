@@ -34,8 +34,8 @@
 1) \dt --> check the all table present in that db
 2) \dt *.*
 
--- Show Table Structure
-1) \d users --> (Table_name)
+-- Show Table Structure 
+1) \d users --> (Table_name) 
 
 
 --  Note 

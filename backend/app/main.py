@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 
-app=FastAPI();
+app = FastAPI();
 
 @app.get("/")
-def Home():
-    return{ "msg": "Hello word"}
+def home():
+    return {"msg" : "Home page "}
