@@ -1,6 +1,6 @@
 
 
--- Switch to PostgreSQL User
+-- Switch to PostgreSQL User(Start the pg sql)
 
 -- PostgreSQL creates a default postgres system user.-
 1) sudo -i -u postgres 
