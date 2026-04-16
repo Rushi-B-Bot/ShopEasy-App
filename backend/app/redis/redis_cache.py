@@ -1,7 +1,7 @@
-import redis
+# import redis
 
-redis_cache = redis.Redis(
-    host="localhost",
-    port=6379,
-    decode_responses=True
-)
+# redis_cache = redis.Redis(
+#     host="localhost",
+#     port=6379,
+#     decode_responses=True
+# )

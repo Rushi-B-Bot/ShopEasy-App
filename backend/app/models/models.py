@@ -1,8 +1,8 @@
-from app.db.redis import redis_client
+# from app.db.redis import redis_client
 
-redis_client.set("test", "hello")
+# redis_client.set("test", "hello")
 
-value = redis_client.get("test")
+# value = redis_client.get("test")
 
-print(value)
+# print(value)
 
