@@ -1,740 +1,618 @@
-"""
-- Week 1: Python Fundamentals (for FastAPI only)
 
-  - Syntax differences Lists, dicts, sets
+# # OOP + Type Hints
 
-  - Functions + Async basics + type hints
+# # Modules & Packages
 
-  - OOP in Python
+# # Exception Handling
 
-  - Error handling
 
-"""
 
-# --------------------------------------------------------------------------
-#  Topic Name :- if/else , for , and/or/not,Ternary
-# -------------------------------------------------------------------------
 def line():
-    print("\n------------------------\n")
+    print("-------------------------")
 
-employees = [
-    {"name": "Ravi", "age": 28, "dept": "IT", "salary": 50000, "active": True},
-    {"name": "Neha", "age": 32, "dept": "HR", "salary": 45000, "active": True},
-    {"name": "Arjun", "age": 26, "dept": "IT", "salary": 60000, "active": True},
-    {"name": "Priya", "age": 29, "dept": "Finance", "salary": 55000, "active": True},
-    {"name": "Rah", "age": 30,  "dept": "Finance", "salary": 60000, "active": False},
+# # 1. Input and Output
 
-]
+# #name = input("Enter the name : ")
+# #print(name);
 
-# 1) any() --> exist or not
-dept = "IT";
-if any(emp["dept"]==dept for emp in employees):
-    print("dept is exit in the dict");
-    line();
+# #age = int(input("Enter the age : "))
+# #print(age);
 
-# 2) len() --> Length find
+# #--------------------------------------------------------------------------------
 
-print(len(employees))
-line();
+# # 2. if / elif / else
 
-# 3) all() --> Need to match all (Not compare with any one )
+# marks = 50;
 
-if all(emp["active"] for emp in employees):
-    print("All employees are active");
-else:
-    print("Some employees are active")
-line();
+# if marks == 35:
+#     print("Passed")
+    
+# elif marks >=50:
+#     print("RanK - D")
 
-if all(emp["age"]>25 for emp in employees):
-    print("Y")
-else:
-    print("N");
-line();
+# else:
+#     print("Failed")
 
-
-# 4) next() --> Find one record at like --> Java -> findFirst()
-# 1st found 1st serve  if multiple records present with same detailes 
-
-emp = next((emp for emp in employees if emp["dept"]=="Finance"),None)
-print(emp)
-line();
-
-# 5) Ternary Operator --> value_if_true if condition else value_if_false 
-
-for emp in employees:
-    result = "Active" if emp["active"] else "Inactive"
-    print(result)
-line();
-
-# 6) f-string (Formatted String)  --> print(f"{emp['']} ")
-    # (f"{emp['name']}")
-for emp in employees:
-    print(f"{emp['name']} and {emp['salary']} is a salary then get bonus is {emp['salary']+5000}")
-line();
-
-# ) Practice
-
-for emp in employees:
-    if emp["active"]:
-        print(emp["name"], "is present in the company")
-        if emp["salary"]> 50000:
-            print(emp["name"], "Salary is higher than 50k")
-line();
-
-# --------------------------------------------------------------------------
-#  Topic Name :- Lists, Dicts, Sets
-# --------------------------------------------------------------------------
-
-# List :
-# --------------------------------------------------------------------------
-# Key Rules
-# -  Ordered 
-# -  Mutable (can change) 
-# -  Allows duplicates 
-# -  Can store multiple data types 
-
-cart = [1,'a',"Hello",3.5,True,0];
-
-# Print the List 
-print(cart[0]);
-print("-1 =",cart[-1]);
-print(cart[-2]);
-print(cart[-3]);
-print(cart[1]);
-print(cart[2]);
-print()
-
-# Adding the element at the end
-cart.append("Laptop");
-print(cart)
-line()
-
-# Adding the element at the index position
-cart.insert(1,"Rushi");
-print(cart)
-line()
-
-# extend() → add multiple items at end
-cart.extend(["abc","KIWI"])
-
-
-# Remove the element by name 
-cart.remove("Hello")  
-print(cart)
-line()
-
-# Remove by the index wise
-removed = cart.pop(1)   
-print("Removed:", removed)
-print("\nUpdated cart:", cart)
-line()
-
-# clear() → remove all items
-#cart.clear()
-#print("clear()",cart)
-#line()
-
-
-# Updating Elements
-cart[0] = "Ram"
-print(cart)
-line()
-
-
-# Length
-# len = len(cart);
-# print("Length: ",len);
 # line()
 
-users = [
-    {"name": "A", "verified": True},
-    {"name": "B", "verified": False}
-]
+# #--------------------------------------------------------------------------------
 
-# verified = [u for u in users if u["verified"]]  # Only return the true value
+# # 3. for loop
+# name = ["Rushi","Raju", "Ram"]
+# age = [12,32,36]
+# student = {"name":"John", "age":20}
 
-verified = [ users for users in users if users["verified"]]
-print(verified)
-line()
+# for i in range(5):
+#     print(i);
+# line();
+
+# chooseAge = 36
+# for index, value in enumerate(age):
+#     if chooseAge == value:
+#         print(f"Found at index {index}")
+#         break
+# else:
+#     print("Not found")
+# line();
+
+# print("List print via index + value")
+# for name in enumerate(name):
+#     print(name);
+# line();
+
+# print("Dict print Only value");
+# for value in student.values():
+#     print(value)
+# line();
+
+# print("Dict print via index + value")
+# for key, value in student.items():
+#     print(key ,"-", value)
+# line()
+# #--------------------------------------------------------------------------------
+
+# # 3.List 
+
+# payment = ["Card","UPI","NetBanking","Wallet","Cash"];
+# prices = [100, 200, 400, 700, 1000]
+
+# # 1.print the list
+# for rank, pay in enumerate(payment,start=1):
+#     print(rank ,pay);
+# line();
+
+# # 2.Find thhe element
+
+# choosePayment = "UPI";
+# for pay in payment:
+#     if choosePayment == pay:
+#         print("UPI is present")
+# line();
+
+# #3. filter() → Above the some of data
+
+# needPrice = 500
+# result = list(filter(lambda price: price>needPrice,prices))
+# print(result);
+# line();
+
+# #5.map() → Action on each data
+
+# result1 = list(map( lambda price: price * 0.9,prices))
+# print(result1)
+# line()
+
+# #6.next() → First Match
+# result3 = next(
+#     (
+#         pay1
+#         for pay1 in payment
+#         if pay1.startswith("Ca")    
+#     ),None
+# )
+
+# print(result3);
+# line();
+
+# # 7. List function (Most Used)
+
+# exp = [price for price in prices if price>500]
+# print(exp)
+# line();
+
+
+# #--------------------------------------------------------------------------------
+# # 4. List[dict]
+
+# employees = [
+#     {"index" : 1,"name": "Ravi", "age": 28, "dept": "IT", "salary": 50000, "active": True},
+#     {"index" : 2,"name": "Neha", "age": 32, "dept": "HR", "salary": 45000, "active": True},
+#     {"index" : 3,"name": "Arjun", "age": 26, "dept": "IT", "salary": 60000, "active": True},
+#     {"index" : 4,"name": "Priya", "age": 91, "dept": "Finance", "salary": 55000, "active": True},
+#     {"index" : 5,"name": "Rahul", "age": 30,  "dept": "HR", "salary": 60000, "active": False},
+# ]
+
+# for emp in employees:
+#     if emp["index"]==1:
+#         print(f"Name : {emp['name']} and Salary : {emp['salary']}")
+
+# res =  len(employees)
+# print("\n",res)
+
+# line();
+
+# # 1.Sum of the salary 
+
+# sum_sal = sum(emp["salary"] for emp in employees if emp["active"])
+# print(sum_sal)
+# line();
+
+# # 2. print the active employes only 
+# #act = [( index,emp["name"]) for index, emp in enumerate(employees, start=1) if emp["active"] ]
+# act = [( index,emp["name"]) for index, emp in enumerate(employees, start=1) if not emp["active"] ]
+# print("act",act)
+# line();
+
+# # 3. Count the active emp
+# count = 0;
+
+# active_count = sum( 
+#         1 
+#         for emp in employees
+#         if  emp["active"]
+#     )
+# print("Active emp count : ",active_count)
+# line();
+
+# sal = [(emp["name"])for emp in employees if emp["dept"]=="IT"]
+# print(sal)
+# line();
+
+# sal_ge = [(emp["name"],emp["salary"])for index,emp in enumerate(employees) if emp["salary"]>50000]
+# print(sorted(sal_ge))
+# line();
+# emp_active = [
+#             (emp["name"],emp["dept"])
+#             for emp in employees 
+#             if emp["active"] and emp["dept"]=="HR" ] 
+
+# print(emp_active)
+# line();
+
+# age_ge = [(emp["name"], emp["age"])for index,emp in enumerate(employees) if emp["age"]>30]
+# print(age_ge);
+# line();
+
+
+# salary1 = {
+#     emp["name"]: emp["salary"]
+#     for emp in employees
+# }
+
+# print(salary1)
+# line();
+# employee_index = {
+#     emp["index"]: emp
+#     for emp in employees
+# }
+
+# print(employee_index)
+# line();
+
 
 
 # --------------------------------------------------------------------------
-# Dicts :
+#  Topic Name :  Function
 # --------------------------------------------------------------------------
-print("---------- Dicts --------------")
-line()
-# Key Rules
-# - Uses curly braces {}
-# - Format → key: value
-# - Keys must be: key : value(duplicate ok)
-# - Unique
-# - Immutable (string, number, tuple)
-# - Values can be anything
 
-student = {
-    "Name": "Rushi",
-    "Age": 25,
-    "Company Name": "Edegevere",
-    "CTC": "3.6 LPA",
-    "Joining Date": "12-03-2025",
-    "course": "course"
-}
+# 1. Multiple Return Values
 
-print(student)
-line()  
+# def data(name, age, salary):
+#     return {
+#         "Name": name,
+#         "Age": age,
+#         "Salary": salary
+#     }
 
-# Accessing Values
-print(student.get("Age"))
-line()
+# result = data("Rushi", 26, 25)
+# print(result["Name"], result["Age"], result["Salary"])
+# line();
 
-# Adding / Updating Items
-student["grade"] = "A"
-student["Age"] = 21
-print(student)
-line()
+# # 2. Variable Arguments ==>In positional arguments, Python matches values by their position (order).
 
-# Removing Items
-student.pop("course", None)
-print(student)
-line()
+# def total(*num):
+#     return sum(num)
 
-# Looping Through Dictionary
-for key in student:
-    print(key, student[key])
-line()
+# result = total(1,2,3,4,5,6)
+# print(result)
+# line();
 
-for key, value in student.items():
-    print(key, value)
-line()
+# # 3. Keyword Arguments ==> Instead of sending values by order, we send them by name.
 
-# Important Methods
-print(student.keys())
-print(student.values())
-print(student.items())
-line()
-
-# Checking Keys
-if "Name" in student:
-    print("Exists")
-line()
-
-# Copying Dictionary
-new_student = student.copy()
-print(new_student)
-
-
-
-# --------------------------------------------------------------------------
-#  Topic Name :-Functions + async :
-# --------------------------------------------------------------------------
-print("\n ---------- Functions + async --------------\n")
-line()
-
-def home():
-    return "Hello Home" 
+# def employee(**data):
+#     for index,value in data.items():
+#         print(index ,":" , value)
     
-print(home());
-line();
+# employee(
+#     name="Rushi",
+#     age=26,
+#     salary=25000,
+#     city="Pune"
+# ) 
+# line();
 
-def add(a,b):
-    return a + b;
+# # Mix *args and **kwarg
 
-ans=add(7,5);
-print(ans)
-line();
+# def info(*ipconfig,**data):
+#     print("Numbers :", ipconfig) 
+#     print("Details :", data)
 
-def create_user1(name,age = 25,role="user"):
-    return {
-        "Name":name,
-        "Age" :age,
-        "Role":role
-    }
+
+# info(10,20,30,name="Rushi",age=26)
+# line();
+
+
+# # 4. High order function 
+
+# num = 5
+# nums =[1,2,3]
+# employee2 = {
+#     "Name" : "Rushi",
+#     "Age" : 26
+# }
+
+# def square(num)-> int:
+#     print(num*num);
+
+# def cube(num):
+#     return num * num * num
+
+# def total_sum(num):
+#     print(sum(num))
+
+# def process(data,function_type):
     
-# result = create_user1("Rushi",role="Admin");  output :- {'Name': 'Rushi', 'Age': Admin, 'Role': 'user'}
-result = create_user1("Rushi",role="Admin");
-print(result)
-line();
+#     print("Process is started");
+#     print("proces is in progress")
+    
+#     if function_type == square:
+#         print("Square function called")
+#         function_type(data);
 
-def total(*num):
-    return sum(num);
+#     if function_type == cube:
+#         print("cube function called")
+#         for i in data:
+#             result = function_type(i);
+#             print(result)
 
-print(total(1,2,2))
-line();
+#     if function_type == total_sum:
+#         print("Sum function called")
+#         function_type(data)
+    
+#     print("Process is compledt ")
 
-# Even numbers only prinnt (* args)
-def even(*args):
-    total = [] ;
-    sum = 0;
-    for i in args:
-        if i % 2 == 0:
-            total.append(i); 
-        else:
-            sum +=i;
-    return { "Totals":total, "Sum":sum};
-
-print(even(1,2,4,5,6,9,10,22));
-line();
+# process(nums,total_sum)
+# line();
 
 
-def create_user(**detailes):
-    user = {};
-    for key , i in detailes.items():
-        user[key] = i;
-    return user 
+# # 5 . Lamda function 
+
+# names=["John","Amy","Christopher"]
+# marks  = [2,3,5,8]
+# students=[
+# ("John",80),
+# ("Amy",95),
+# ("Mike",75)
+# ]
+
+# # 1. map()-> applies a function to every element in an iterable.
+# ans = list(map(lambda x: x*2,marks))
+# print(ans)
+# line();
+
+# # 2. Filter ()
+# ans = list(filter(lambda x:x%2==0,marks));
+# print(ans)
+# line();
+
+# # 3.Sorted()
+# ans = sorted(names,key=len)
+# print(ans)
+# line()
+
+# # 4. min() && max()
+# ans = list(min(students, key=lambda x:x[1]))
+# print("min(): ", ans)
+# ans = list(max(students, key=lambda x:x[1]))
+# print("max(): ", ans)
+# line();
+
+# # ----------;----------------------------------------------------------------
+# #  Topic Name :  Decorators + Type Hints 
+# # --------------------------------------------------------------------------
 
 
-user1 = create_user(name="Rushi", age=21, role="Admin")
-user2 = create_user(name="Sneha", email="amit@gmail.com", role="User")
+# def logo_dec(func):
+#     def wrapper(num):
+#         print("\nValue print : ",num)
+#         return func(num);
+#     return wrapper ;
+    
+# def decorator(func):
+#     def wrapper(num):
+#         if not num.isdigit():
+#             print("Please enter the correct number")
+#             return
+#         return func(num)
+#     return wrapper
 
-print(user1)
-
-print("\n",user2) 
-line();
-
-
-def log_event(**info):
-    for k, v in info.items():
-        print(f"{k}: {v}")
-
-log_event(error="File not found", code=404)
-line();
-
-data = {
-    "name": "Rushi",
-    "age": 21
-}
-
-def show(name, age):
-    print(name, age)
-
-show(**data)
-line();
-
-# Function with Return Value with Type hints
-
-from typing import TypedDict, List, Tuple, Dict
-
-def totalamt(amount,rate) -> float:
-    return amount - rate;
-
-print(totalamt(1.2,2.1))  
-line();
-
-def log_data(data: str) -> None:
-    print(data)
-
-log_data("Data")
-line();
-
-class Student(TypedDict):
-    Name: str
-    Age: int
-    RollNo: int
-    Std: str
-    Joining_Date: str
-    Result: str  # "Pass" | "Fail"
+# @logo_dec
+# @decorator
+# def func(num):
+#     print(num)
 
 
-Students: List[Student] = [
-    {
-        "Name": "Rushi",
-        "Age": 25,
-        "RollNo": 1,
-        "Std": "11th",
-        "Joining_Date": "12-01-2018",
-        "Result": "Pass"
-    },
-    {
-        "Name": "Amit",
-        "Age": 24,
-        "RollNo": 2,
-        "Std": "12th",
-        "Joining_Date": "15-06-2019",
-        "Result": "Fail"
-    }
-]
+# func("Rushi")
+# func("123")
+# line();
 
+# # Exercise 2: Login Required
 
-# 1. Print the all Records 
+# is_logged_in = False  #True
 
-def get_all_records()->list[Student]:
-    return Students;
+# def login_required(func):
+#     def wrapper(*args, **kwargs):
+#         if not is_logged_in:
+#             print("Login failed. Please login first.")
+#             return
+#         else:
+#             print("Login sucessfully")
+#             return func(*args, **kwargs)
+#     return wrapper;
 
-print(get_all_records());
-line();
+# @login_required
+# def dashboard():
+#     print("Welcome to dasboard page");
 
-# 2. Print the all Records as Tuple 
-# 👉 The list becomes immutable,
-# 👉 BUT the dictionaries inside are STILL mutable 
+# dashboard();
+# line();
 
-def get_all_records_as_Tuple() -> Tuple[dict, ...]:
-    return tuple(Students)
-
-print(get_all_records_as_Tuple());
-line();
-
-# 3. Get record by roll number
-
-def get_record_rollNo(RollNo:int)->list[dict]:
-    stu = [ stu for stu in Students if stu["RollNo"]==RollNo];
-    return stu
-
-
-print(get_record_rollNo(1));
-line();
-
-# 4. Print aligned data (formatted output)
-
-def print_students_table() -> None:
-    print(f"{'Name':<8} {'RollNo':<8} {'Result':<6}")
-    for s in Students:
-        print(f"{s['Name']:<10} {s['RollNo']:<7} {s['Result']:<6}")
-        
-print(print_students_table())
-line();
-
-# 5. Check record exists
-
-def check_record(data:int | str)->list[dict | str | int] | None: 
-    if any(stu["RollNo"]==data for stu in Students):
-        print("THe  Record is present")
-        
-print(check_record(1));
-line();
-
-# 6. Multiple roll numbers input
-
-def get_multiple_records(rollNo:list[int])->list[dict | Student]:
-    return [stu for stu in Students if stu["RollNo"] in rollNo]
-
-print(get_multiple_records([1,2]));
-line();
-# 7. Get only names
-
-def get_name_only(name:str)-> tuple:
-    return tuple(stu for stu in Students if stu["Name"]==name);
-
-def get_name_only1(name:str | list[str] )-> tuple:
-    return tuple(stu for stu in Students if stu["Name"] in name);
-print(get_name_only("Rushi"))
-line();
-
-print(get_name_only1(["Rushi","Amit"]))
-line();
-
-def count_students():
-    return len(Students);
-
-print(count_students());
-line();
-
-# --------------------------------------------------------------------------
-#  Topic Name :  OOP in Python + Error handling
+# ----------;----------------------------------------------------------------
+#  Topic Name :  Generators
 # --------------------------------------------------------------------------
 
-# 1. Class & Object
+# def numbers():
+#     print("Start")
 
-class User:
+#     yield 10
+
+#     print("Middle")
+
+#     yield 20
+
+#     print("End")
+
+#     yield 30
+
+
+# gen = numbers()
+
+# print(next(gen))
+# print(next(gen))
+# print(next(gen))
+# line()
+
+# def numbers():
+#     for i in range(1,11):
+#         yield i
+
+
+# for num in numbers():
+#     print(num)
     
-    def __init__(self,Name,SurName):
-        self.Name = Name             # Public variable
-        self.SurName = SurName       # Public variable
-
-    def display(self):
-        return f"{self.Name} and {self.SurName}";
-
-my_User = User("Rushi","Bhondave")
-print(my_User.Name);
-print(my_User.SurName);
-print(my_User.display());
+# ----------;----------------------------------------------------------------
+#  Topic Name :  String Handling
+# --------------------------------------------------------------------------
 
 
-# 2. Encapsulation (Data Protection)
+# name = "rUsHIkEsH ramesh  bhondave"
 
-class BankAccount:
-    def __init__(self, name):
-        self.name = name              # public
-        self._pin = 5046              # protected
-        self.__balance = 1000         # private
+# print(len(name))
 
-    def withdraw(self, amount):
-        if amount <= 0:
-            return "Invalid amount"
+# print(name.lower())
 
-        if amount > self.__balance:
-            return "Insufficient balance"
+# print(name.upper())
 
-        self.__balance -= amount
-        return f"{amount} withdrawn. Remaining balance: {self.__balance}"
+# print("1st letter of every word uppercase " , name.title())
 
-account = BankAccount("Rushi")
-print(account.withdraw(500))
-print(account._BankAccount__balance) # Python allows to acces the private variable but DON’T DO THIS ❌
+# print(name.capitalize())
+
+# name1 = "    rushikehsh    "
+# print(name1)
+# print(name1.strip().title())
 
 
-#3. Inheritance / Polymorphism
+# ----------;----------------------------------------------------------------
+#  Topic Name : Moudule  
+# -------------------------------------------------------------------------
+# from module_package import *  
+# print(__name__)
+# print(__package__)
 
-class Payement:
-
-    def __init__(self,amount):
-        self._amount = amount
-
-    def pay(self):
-        raise NotImplementedError("Subclasses must implement this")
-
-class UPIPayment(Payement):
-
-    def pay(self):
-        print("Payment done by UPIPayment")
-
-class CardPayment(Payement):
-
-    def pay(self):
-        print("Payment done by CardPayment")
-
-class walletPayment(Payement):
-
-    def pay(self):
-        print("Payment done by walletPayment ")
+# print(add(2,6))
 
 
-#payment_Type = int(input("Enter the payment menthod 1.UPIPayment 2.CardPayment 3.walletPayment :- "))
+# if __name__ == "__main__":
+#     def mul(a,b):
+#         return a - b;
 
-#if payment_Type == 1:
-payment = UPIPayment(1000);
-print(payment.pay());
+# print(mul(2,6))
+
+# age: int = 25
+# name: str = "Rahul" 
+
+# print(__annotations__)
+
+x = 10
+
+
+# ----------;----------------------------------------------------------------
+#  Topic Name : OOPS + Type Hints
+# --------------------------------------------------------------------------
+
+
+# Typing hint 
+# Magic methods
+# SOLID principles
+# Design patterns
+
+# class Product1:
+#     pass
+
+#     @classmethod
+#     def show(cls):
+#         print("cls : ",cls)
+
+# Product1.show()
+# line();
+
+########################################################################
+
+# Encapsulation
+
+# 1. @property
+
+
+class Product:
     
-#if payment_Type == 2:
-payment = CardPayment(1000);
-print(payment.pay());
+    total_products = 0
+    GST = 18
     
-#if payment_Type == 3:
-payment = walletPayment(1000);
-print(payment.pay());
-
-
-# Super Keyword
-
-class BaseUser:
-    def __init__(self,name):
+    def __init__(self,product_id,name,_price,stock): 
+        self.product_id = product_id
         self.name = name
+        self._price = _price
+        self.stock = stock
+        Product.total_products +=1
 
-class User(BaseUser):
-    def __init__(self, name,email):
-        super().__init__(name)
+    @property
+    def get_price(self):
+        print(f"Prodcut Name = {self.name} and Price {self._price}")
+        
+    def display(self)->None:
+        print("ID:",self.product_id)
+        print("Product Name:",self.name)
+        print("Product price:",self._price)
+        print("Product stock:",self.stock)
+        print("============================")
+
+    def cart(self,name,qunatity)->None:
+        if not qunatity > 0:
+            print("quntity enterd is 0")
+            print("============================")
+        elif self.stock>=qunatity:
+            self.stock-= qunatity
+            print("Order is placed",name)
+            print("============================")
+        else:
+            print("Insufficient Stock")
+            print("============================")
+
+    def add_Stock(self,name,stock_add):
+        if stock_add < 0:
+            print("Enter the correct quntity");
+            print("============================")
+        else:
+            if self.name == name:
+                self.stock+=stock_add;
+                print(f"Stock qunitity is : {self.stock} and Stock name is {name}");
+                print("============================")
+            else:
+                print("Item is not found")
+                print("============================")
+
+    @classmethod
+    def show_product_count(cls):
+        print(f"{Product.total_products} Product is list in the market")
+
+
+
+# p1 = Product(1,"Laptop", 50000,20)
+# p2 = Product(2,"Phone", 25000,20)
+# p3 = Product(3,"Screen", 2000,30)
+
+# p1.display()
+# p2.display()
+# p3.display()
+
+# p1.get_price
+
+# p1.cart("Laptop",10)
+# p2.cart("Phone",5)
+# p3.cart("Laptop",101)
+
+# p1.add_Stock("Laptop",10)
+# p2.add_Stock("Phone",20)
+# p2.add_Stock("Toy",20)
+
+# Product.show_product_count()
+# print("============================")
+
+########################################################################
+
+# 3. Inheritance
+
+class Employee:
+    
+    def __init__(self, name, email):
+        self.name = name
         self.email = email
+
+    def show_details(self):
+        print("Name: ",self.name)
+        print("Email:",self.email)
+
+
+class FullTimeEmployee(Employee):
     
-    def display(self):
-        return f" My name is {self.name} and Mail id:{self.email}"
+    def __init__(self, name, email,monthly_salary):
+        super().__init__(name, email)
+        self.monthly_salary = monthly_salary
+
+    def calculate_salary(self):
+        print("Emp Salary",self.monthly_salary)
 
 
-user = User("Rushi","Rushi@gmail.com");
-print(user.display());
+class Freelancer(Employee):
+    def __init__(self, name, email,hourly_rate, hours_worked):
+        super().__init__(name, email)
+        self.hourly_rate = hourly_rate
+        self .hours_worked = hours_worked
 
-
-# --------------------------------------------------------------------------
-#  Topic Name :  Error handling
-# --------------------------------------------------------------------------
-
-try:
-    x = int("abc");
-except ValueError:
-    print("Value error")
-except TypeError:
-    print("Type error")
-finally:
-    print("Closing the res")
+    def calculate_salary(self):
+        total_sal = self.hourly_rate*self.hours_worked
+        print("Emp Salary",total_sal)
 
 
 
+emp1 = FullTimeEmployee(
+    "Riya",
+    "riya@example.com",
+    50000
+)
+
+emp2 = Freelancer(
+    "Arjun",
+    "arjun@example.com",
+    500,
+    80
+)
+
+emp1.show_details()
+emp1.calculate_salary()  # 50000
+print()
+emp2.show_details()
+emp2.calculate_salary() # 40000
 
 
-# ----------------------------------------------------------------------------------------------
-#  Small project : Student Markshit + Addendance Report
-#  Topic's Name :-Functions + Type hints + async + List + Tuple + Dict + *args + *Kwargs
-# ----------------------------------------------------------------------------------------------
-
-# Print the all student List 
-# Print the specific data
-# 2 List comapre and print (Reocrd + Marks)
-# Attdeance List Print
-# Default attendace findout
-
-Students_Record = [
-    {
-        "Name": "Rushi",
-        "Age": 25,
-        "RollNo": 1,
-        "Std": "11th",
-        "Joining_Date": "12-01-2018"
-    },
-    {
-        "Name": "Amit",
-        "Age": 24,
-        "RollNo": 2,
-        "Std": "12th",
-        "Joining_Date": "15-06-2019"
-    },
-    {
-        "Name": "Sneha",
-        "Age": 23,
-        "RollNo": 3,
-        "Std": "10th",
-        "Joining_Date": "10-03-2020"
-    },
-    {
-        "Name": "Priya",
-        "Age": 22,
-        "RollNo": 4,
-        "Std": "11th",
-        "Joining_Date": "22-07-2021"
-    },
-    {
-        "Name": "Raj",
-        "Age": 24,
-        "RollNo": 5,
-        "Std": "9th",
-        "Joining_Date": "22-07-2021"
-    }
-]
-
-student_Marks_Attdeance = [
-    {
-        "RollNo": 1,
-        "Marks": 
-                {
-                    "Maths": 45,
-                    "English": 65,
-                    "Java": 85,
-                    "Python": 25,
-                    "Marathi": 35,
-                    "Science": 100
-                },
-        "Attdeance" :
-                {
-                    "Jan" :
-                    {
-                        "Monday" :  "Present",
-                        "Tuesday" :  "Absent",
-                        "Wensday" :  "Present",
-                        "Thursday" :  "Absent",
-                        "Friday" :  "Present",
-                        "Saturdy" :  "Absent",
-                    },
-                    "Feb" :
-                    {
-                        "Monday" :   "Present",
-                        "Tuesday" :  "Absent",
-                        "Wensday" :  "Absent",
-                        "Thursday" : "Absent",
-                        "Friday" :   "Present",
-                        "Saturdy" :  "Absent",
-                    },
-                    "Mar" :
-                    {
-                        "Monday" :   "Present",
-                        "Tuesday" :  "Absent",
-                        "Wensday" :  "Absent",
-                        "Thursday" : "Absent",
-                        "Friday" :   "Present",
-                        "Saturdy" :  "Present",
-                    },
-                }
-    },
-    
-    {
-        "RollNo" : 2,
-        "Marks" :
-            {
-                "Maths": 65,
-                "English": 95,
-                "Java": 85,
-                "Python": 65,
-                "Marathi": 69,
-                "Science": 99.5
-            },
-        "Attdeance" :
-            {
-                "Jan" :
-                    {
-                        "Monday" :  "Present",
-                        "Tuesday" :  "Absent",
-                        "Wensday" :  "Present",
-                        "Thursday" :  "Absent",
-                        "Friday" :  "Present",
-                        "Saturdy" :  "Absent",
-                    },
-                "Feb" :
-                    {
-                        "Monday" :   "Absent",
-                        "Tuesday" :  "Absent",
-                        "Wensday" :  "Present",
-                        "Thursday" : "Absent",
-                        "Friday" :   "Present",
-                        "Saturdy" :  "Absent",
-                    },
-                    "Mar" :
-                    {
-                        "Monday" :   "Present",
-                        "Tuesday" :  "Absent",
-                        "Wensday" :  "Present",
-                        "Thursday" : "Absent",
-                        "Friday" :   "Present",
-                        "Saturdy" :  "Absent",
-                    },
-            }
-    },
-    {
-        "RollNo" : 3,
-        "Marks" :
-            {
-                "Maths": 15,
-                "English": 75,
-                "Java": 50,
-                "Python": 65,
-                "Marathi": 95,
-                "Science": 34
-            },
-        "Attdeance" :
-            {
-                "Jan" :
-                    {
-                        "Monday" :  "Present",
-                        "Tuesday" :  "Absent",
-                        "Wensday" :  "Present",
-                        "Thursday" :  "Absent",
-                        "Friday" :  "Present",
-                        "Saturdy" :  "Absent",
-                    },
-                "Feb" :
-                    {
-                        "Monday" :   "Absent",
-                        "Tuesday" :  "Absent",
-                        "Wensday" :  "Present",
-                        "Thursday" : "Absent",
-                        "Friday" :   "Present",
-                        "Saturdy" :  "Absent",
-                    },
-                    "Mar" :
-                    {
-                        "Monday" :   "Present",
-                        "Tuesday" :  "Absent",
-                        "Wensday" :  "Present",
-                        "Thursday" : "Absent",
-                        "Friday" :   "Present",
-                        "Saturdy" :  "Absent",
-                    },
-            }
-    },
-]
-
-
-
-
-
-
-
-
-
-
-
+########################################################################
